@@ -9,6 +9,10 @@ npm init -y
 put node_modules in .gitignore
 put config/ in .gitignore
 
+// Packages to install:
+npm i express
+npm i sequelize pg rowdy-logger   
+
 // Sequelize setup steps
 sequelize init
 update config.json
@@ -17,11 +21,10 @@ need to update database name
 
 createdb <database_name>
 
+// Sequelize create a model and migrate steps:
+sequelize model:generate --name=dino --attributes name:string,type:string
+sequelize db:migrate
 
-
-// Packages to install:
-npm i express
-npm i sequelize pg rowdy-logger   
 
 
 CRUD   - Action          - Http Verbs - Endpoint
