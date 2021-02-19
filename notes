@@ -1,0 +1,33 @@
+// Things we only need to install once:
+npm i -g nodemon
+
+// Setup Steps:
+git init
+touch server.js .gitignore
+npm init -y
+
+put node_modules in .gitignore
+put config/ in .gitignore
+
+// Sequelize setup steps
+sequelize init
+update config.json
+change the dialect to postgres
+need to update database name
+
+createdb <database_name>
+
+
+
+// Packages to install:
+npm i express
+npm i sequelize pg rowdy-logger   
+
+
+CRUD   - Action          - Http Verbs - Endpoint
+=================================================
+CREATE - Create          - POST       - /resource
+READ   - Index(Read All) - GET        - /resource
+READ   - Show(Read One)  - GET        - /resource/id
+UPDATE - Update          - PUT        - /resource/id
+DELETE - Delete          - DELETE     - /resource/id
