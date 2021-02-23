@@ -1,0 +1,20 @@
+body {
+    margin: 0px;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rebeccapurple;
+    padding: 10px;
+}
+
+header a {
+    color:white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+header a:hover {
+    color: lightcoral;
+}
