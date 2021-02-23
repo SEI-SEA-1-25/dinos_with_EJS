@@ -6,18 +6,28 @@ const db = require('../models')
 router.get('/', async (req, res) => {
     try {
         const dinos = await db.dino.findAll({ raw: true })
-        console.log(dinos)
+        // console.log(dinos)
+        // res.send()
         res.render('dinos/index', { dinos })
     } catch (err) {
         console.log(err)
     }
 })
 
+
+// New Dino Form Route
+router.get('/new', (req, res) => {
+    res.render("dinos/new")
+})
+
+
+
 // Show (Show One) Route
 router.get('/:id', async (req, res) => {
     try {
-        const dino = await db.dino.findByPk(req.params.id)
-        res.send(dino)
+        const dino = await db.dino.findByPk(req.params.id, { raw: true })
+        console.log(dino);
+        res.render('dinos/show', { dino })
     } catch (err) {
         console.log(err)
     }
@@ -31,7 +41,7 @@ router.post('/', async(req, res) => {
             name: req.body.name,
             type: req.body.type
         })
-        res.send(newDino);
+        res.redirect(`/dinos/${newDino.id}`);
     } catch(err) {
         console.log(err)
     }
@@ -45,7 +55,7 @@ router.put('/:id', async (req, res) => {
             name: req.body.name,
             type: req.body.type
         })
-        res.send(updatedDino)
+        res.redirect(`/dinos/${req.params.id}`)
     } catch (err) {
         console.log(err)
     }
@@ -56,7 +66,7 @@ router.delete('/:id', async (req, res) => {
     try {
         const dino = await db.dino.findByPk(req.params.id)
         const deletedDino = await dino.destroy();
-        res.send(deletedDino);
+        res.redirect('/dinos');
     } catch (err) {
         console.log(err)
     }

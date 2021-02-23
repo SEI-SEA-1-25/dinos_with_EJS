@@ -18,3 +18,14 @@ header a {
 header a:hover {
     color: lightcoral;
 }
+
+.card {
+    border: 1px solid burlywood;
+    padding: 10px;
+    margin: 10px;
+}
+
+.container {
+    width: 75%;
+    margin: 0 auto;
+}

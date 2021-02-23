@@ -3,6 +3,7 @@ const express = require('express')
 const rowdy = require('rowdy-logger')
 const db = require('./models')
 const ejsLayouts = require('express-ejs-layouts')
+const methodOverride = require('method-override')
 
 // Variables
 const app = express();
@@ -13,9 +14,10 @@ const rowdyResults = rowdy.begin(app)
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(ejsLayouts)
-app.use(express.urlencoded({ extended: false }))
-// urlencoded gets the form data from the request and puts it inside of
-// req.body
+app.use(express.urlencoded({ extended: false })) // urlencoded gets the form data from the request and puts it inside of req.body
+app.use(methodOverride('_method'))
+
+// Controllers
 app.use('/dinos', require('./controllers/dinosController'))
 
 // Routes

@@ -6,6 +6,8 @@ READ   - Show(Read One)  - GET        - /resource/id
 UPDATE - Update          - PUT        - /resource/id
 DELETE - Delete          - DELETE     - /resource/id
 
+GET    - Get New Form    - GET        - /resource/id/new
+
 Learnings Goals:
 * Learn EJS templating to render views dynamically
     * Squids <% %>
@@ -22,3 +24,4 @@ Setup:
 npm i ejs
 app.set('view engine', 'ejs') // Below the const app, but above the routes
 npm i express-ejs-layouts
+npm i method-override
