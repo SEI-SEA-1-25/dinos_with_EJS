@@ -1,0 +1,21 @@
+<h1>Homepage</h1>
+<a href="/anotherpage">Another Page</a>
+
+<!-- Templating w/ variables  -->
+<h2>Hi, <%= name %></h2>
+
+
+<!-- Loops -->
+<h3>These are all my friends:</h3>
+<ul>
+    <% for(let i = 0; i < friends.length; i++) { %>
+        <li><%= friends[i] %></li>
+    <% } %>
+</ul>
+
+<!-- Conditional Rendering -->
+<% if(friends.length > 3) { %>
+    <p><%= name %> has a lot of friends!</p>
+<% } else { %>
+    <p><%= name %> doesn't have a lot of friends :(</p>
+<% } %>
