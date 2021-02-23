@@ -1,0 +1,9 @@
+ejs is a templatting language
+
+arrays call for "for" loops
+
+npm i ejs
+
+express-ejs-layouts
+
+ npm i method-override

@@ -1,85 +1,38 @@
 // Required Modules
-const express = require('express')
-const rowdy = require('rowdy-logger')
-const db = require('./models')
+const express = require("express");
+const rowdy = require("rowdy-logger");
+const db = require("./models");
+const ejslayouts = require("express-ejs-layouts");
+const methodOverride = require("method-override");
 
 // Variables
 const app = express();
 const PORT = 3000;
-const rowdyResults = rowdy.begin(app)
+const rowdyResults = rowdy.begin(app);
 
+app.set("view engine", "ejs");
+app.use(express.static("public"));
+app.use(ejslayouts);
+app.use("/dinos", require("./controllers/dinosController"));
 // Middleware
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }));
 // urlencoded gets the form data from the request and puts it inside of
 // req.body
-
+app.use(methodOverride("_method"));
 // Routes
-app.get('/', (req, res) => {
-    res.send('Hello World! From express! For a second time!')
-})
+app.get("/", (req, res) => {
+  res.render("index", {
+    name: "Louisa",
+    friends: ["harry", "larry", "moe", "smurfy"],
+  });
+});
 
-// CRUD routes for dinos
-
-// Index (Read All) Route
-app.get('/dinos', async (req, res) => {
-    try {
-        const dinos = await db.dino.findAll()
-        res.send(dinos)
-    } catch (err) {
-        console.log(err)
-    }
-})
-
-// Show (Show One) Route
-app.get('/dinos/:id', async (req, res) => {
-    try {
-        const dino = await db.dino.findByPk(req.params.id)
-        res.send(dino)
-    } catch (err) {
-        console.log(err)
-    }
-})
-
-// Create Route
-app.post('/dinos', async(req, res) => {
-    try {
-        // console.log(req.body);
-        const newDino = await db.dino.create({
-            name: req.body.name,
-            type: req.body.type
-        })
-        res.send(newDino);
-    } catch(err) {
-        console.log(err)
-    }
-})
-
-app.put('/dinos/:id', async (req, res) => {
-    try {
-        const dino = await db.dino.findByPk(req.params.id)
-        const updatedDino = await dino.update({
-            name: req.body.name,
-            type: req.body.type
-        })
-        res.send(updatedDino)
-    } catch (err) {
-        console.log(err)
-    }
-})
-
-app.delete('/dinos/:id', async (req, res) => {
-    try {
-        const dino = await db.dino.findByPk(req.params.id)
-        const deletedDino = await dino.destroy();
-        res.send(deletedDino);
-    } catch (err) {
-        console.log(err)
-    }
-})
-
+app.get("/anotherpage", (req, res) => {
+  res.render("anotherpage");
+});
 
 // Start the server!
 app.listen(PORT, () => {
-    rowdyResults.print()
-    console.log(`Server is listening on port ${PORT}`)
-})
+  rowdyResults.print();
+  console.log(`Server is listening on port ${PORT}`);
+});

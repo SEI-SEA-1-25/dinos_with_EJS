@@ -1,0 +1,16 @@
+<h1>Dino Show Page</h1>
+<a href="/dinos">Back to dinos index</a>
+<div class="card">
+    <h2><%= dino.name %> the <%= dino.type %></h2>
+    <form method="POST" action="/dinos/<%= dino.id %>/?_method=DELETE">
+        <input type="submit" value="Delete">
+    </form>
+    <form method="POST" action="/dinos/<%=dino.id %>/?_method=PUT">
+        <label>Name</label>
+        <input type="text" name="name" value="<%= dino.name %>">
+        
+        <label>Type</label>
+        <input type="text" name="type" value="<%= dino.type %>">
+        <input type="submit" value="Update">
+    </form>
+</div>

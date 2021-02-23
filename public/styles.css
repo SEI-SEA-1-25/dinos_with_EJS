@@ -1,0 +1,32 @@
+body {
+    margin: 0px;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: rebeccapurple;
+    padding: 10px;
+}
+
+
+header a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+header a:hover {
+    color: lightcoral;
+}
+
+.card {
+    border: 1px solid burlywood;
+    padding: 10px;
+    margin: 10px;
+}
+
+.container {
+    padding: 10px;
+}
+
