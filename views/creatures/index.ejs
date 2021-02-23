@@ -2,6 +2,7 @@
 <a href="/creatures/new">New Creature</a>
 <% creatures.forEach(creature => { %>
     <div class="card">
-        <a href="/creatures/<%= creature.id %>"><%= creature.type %> <%= creature.img_url %></a>
+        <a class="creature-type" href="/creatures/<%= creature.id %>"><%= creature.type %> 
+            <img class="picture" src="<%= creature.img_url %>"></a>
     </div>
 <% }) %>

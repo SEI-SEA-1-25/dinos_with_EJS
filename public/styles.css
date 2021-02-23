@@ -9,6 +9,10 @@ header {
     padding: 10px;
 }
 
+.creature-type {
+    display: block;
+    font-size: 20px;
+}
 
 header a {
     color: white;
@@ -28,5 +32,9 @@ header a:hover {
 
 .container {
     padding: 10px;
+}
+
+.picture {
+    width: 500px;
 }
 
