@@ -3,22 +3,24 @@ const express = require("express");
 const rowdy = require("rowdy-logger");
 const db = require("./models");
 const ejslayouts = require("express-ejs-layouts");
-const methodOverride = require("method-override");
+const methodOverride = require('method-override')
 
 // Variables
 const app = express();
 const PORT = 3000;
 const rowdyResults = rowdy.begin(app);
 
+// Middleware
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(ejslayouts);
-app.use("/dinos", require("./controllers/dinosController"));
-// Middleware
 app.use(express.urlencoded({ extended: false }));
 // urlencoded gets the form data from the request and puts it inside of
 // req.body
-app.use(methodOverride("_method"));
+app.use(methodOverride('_method'))
+
+app.use("/dinos", require("./controllers/dinosController"));
+app.use("/creatures", require("./controllers/creaturesController"));
 // Routes
 app.get("/", (req, res) => {
   res.render("index", {

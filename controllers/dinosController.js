@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 
 // new dino form route 
 router.get("/new", (req, res) => {
-  res.render("dinos/dino/new")
+  res.render("dinos/new")
 })
 
 // Show (Show One) Route
